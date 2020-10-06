@@ -7,9 +7,6 @@ function Nappi(props) {
   </button>;
 }
 
-function NumeroSyote(props) {
-  return <input type="number" id={props.id} name={props.id} min={props.min} max={props.max} value={props.value}/>
-}
 
 
 
@@ -28,26 +25,32 @@ class App extends React.Component {
     super(props);
     this.state = {
       leveys: 30,
-
+      leveyssyote: 30
     };
   }
 
+  paivitaLeveyssyote(leveyssyote){
+    this.state.leveyssyote = leveyssyote.target.value;  
+  }
+
   paivitaRuudukko(){
-    //alert("Päivitetään ruudukon koko");
-    this.setState({
-      leveys: this.state.leveys - 1, 
-    });
+    if (0 < this.state.leveyssyote){ 
+      this.setState({
+        leveys: this.state.leveyssyote, 
+      });
+    } else {
+      //alert(this.state.leveyssyote);
+    }
   }
 
   render(){
-    var korkeus = 2;
+    var korkeus = 2;  
     return (
       <div className="App">
         <h1>Browser Keyboard</h1>  
         <label for="leveysSyote">Leveys</label>
-        <NumeroSyote id="leveysSyote" min="1" max="100" value={this.state.leveys}/>
+        <input type="number" id="leveysSyote" min="1" max="100" onChange={evt => this.paivitaLeveyssyote(evt)}/>
         <label for="korkeusSyote">Korkeus</label>
-        <NumeroSyote id="korkeusSyote" min="1" max="100"value={korkeus}/>
         <Nappi onClick={() => this.paivitaRuudukko()} name="Päivitä"/>
         <Ruudukko leveys={this.state.leveys} korkeus={korkeus}/>
       </div>
