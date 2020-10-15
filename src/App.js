@@ -8,15 +8,18 @@ function Nappi(props) {
 }
 
 
-
-
 function Ruudukko(props){
   var i = 1;
   var ruudut = [];
   for (var l = 0; l < props.leveys; l++){
-    ruudut.push(<div class="ruutu">{i++}</div>);
+    ruudut.push(<Ruutu i={i++}></Ruutu>);
   }
   return <div class="ruudukko">{ruudut}</div>;
+}
+
+function Ruutu(props){
+   return <button class="ruutu" onClick={() => alert("Viesti lähetetään, jos voitaisiin " + props.i)}>{props.i}</button>;
+
 }
 
 

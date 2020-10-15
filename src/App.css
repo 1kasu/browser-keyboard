@@ -31,13 +31,13 @@
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(250px,1fr));
   justify-content: space-around;
-  background-color: rgb(115,9,66);
   align-content: center;
 }
 
 .ruutu {
-  color: #fff;
-  border: 1px solid #fac;
+  color: #f6c;
+  background-color: #929;
+  border: 1px solid #f6c;
 }
 
 @keyframes App-logo-spin {
